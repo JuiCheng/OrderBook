@@ -1,0 +1,73 @@
+$Background_color : #131B29;
+$Default_text_color : #F0F4F8;
+$Quote_table_head_text_color : #8698aa;
+$Buy_quote_price_text_color : #00b15d;
+$Sell_quote_price_text_color : #FF5B5A;
+$Quote_row_hover_background_color: #1E3059;
+$Buy_quote_accumulative_total_size_bar_color: rgba(16, 186, 104, 0.12);
+$Sell_quote_accumulative_total_size_bar_color: rgba(255, 90, 90, 0.12);
+$Animation_flash_green_background_color: rgba(0, 177, 93, 0.5);
+$Animation_flash_red_background_color: rgba(255, 91, 90, 0.5);
+
+.app {
+  background-color: $Background_color;
+}
+
+.card {
+  .title {
+    color: $Default_text_color;
+  }
+  .current_price {
+    margin: 0 16px 0 16px;
+    // color: $Buy_quote_price_text_color;
+    // background-color: $Buy_quote_accumulative_total_size_bar_color;
+    text-align: center;
+  }
+}
+.table {
+  width: 100%;
+  table-layout:fixed;
+  border-collapse:collapse;
+  thead {
+    color: $Quote_table_head_text_color;
+  }
+  tbody {
+    color: $Default_text_color;
+    tr {
+      
+      transition: background-color 0.1s linear;
+      .buy_price_coloe {
+        color: $Buy_quote_price_text_color;
+      }
+      .sell_price_coloe {
+        color: $Sell_quote_price_text_color;
+      }
+      .size {
+        transition: background-color 0.1s linear;
+      }
+      .total {
+        transform: perspective(1px) translateZ(0);
+        
+      }
+      .total::before {
+        content: '';
+        
+        unicode-bidi: bidi-override;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        
+        width: var(--width);
+        background-color: var(--color);
+        z-index: -1;
+      }
+      td {
+        padding: 6px;
+      }
+    }
+    tr:hover {
+      background-color: $Quote_row_hover_background_color !important;
+    }
+  }
+}
